@@ -1,15 +1,13 @@
 package daoimpl;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-
 import bean.Users;
 import dao.UsersDao;
+import daoimpl2.DBUtil;
 
-public class UsersDaoImpl implements UsersDao {
+public class UsersDaoImpl extends DBUtil<Users> implements UsersDao {
 
 	Connection conn=null;
 	PreparedStatement pst=null;
@@ -41,7 +39,7 @@ public class UsersDaoImpl implements UsersDao {
 			user.setId(rst.getInt(1));
 			user.setName(rst.getString(2));
 			user.setPasswd(rst.getString(3));
-			user.setAge(rst.getString(4));
+			user.setAge(rst.getInt(4));
 			user.setAddress(rst.getString(5));
 			
 			}
@@ -61,6 +59,17 @@ public class UsersDaoImpl implements UsersDao {
 			}
 		}
 
+		return user;
+	}
+
+	@Override
+	public Users getEntity(ResultSet rs) throws Exception {
+		Users user=new Users();
+		user.setId(rs.getInt(1));
+		user.setName(rs.getString(2));
+		user.setPasswd(rs.getString(3));
+		user.setAge(rs.getInt(4));
+		user.setAddress(rs.getString(5));
 		return user;
 	}
 

@@ -1,11 +1,13 @@
-package daoimpl;
+package daoimpl2;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import bean.Student;
 import dao.GradeDao;
 import dao.StudentDao;
@@ -31,7 +33,7 @@ public class StudentDaoImpl implements StudentDao {
 	}
 	
 	@Override
-	public List<Student> findAll(){
+	public List<Student> findAll() {
 		// TODO 自动生成的方法存根
 		List<Student> list=new ArrayList<>();
 		Student stu=null;
@@ -63,7 +65,7 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public Student findById(int id)  {
+	public Student findById(int id) {
 		Student stu=null;
 		String sql="select * from student where id=?";
 		
@@ -109,7 +111,7 @@ public class StudentDaoImpl implements StudentDao {
 		if(num>0) {
 			return true;
 		}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
@@ -135,7 +137,7 @@ public class StudentDaoImpl implements StudentDao {
 		if(num>0) {
 			return true;
 		}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
@@ -156,7 +158,7 @@ public class StudentDaoImpl implements StudentDao {
 		if(num>0) {
 			return true;
 		}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
@@ -173,7 +175,7 @@ public class StudentDaoImpl implements StudentDao {
 	
 			if(conn!=null) 
 			conn.close();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}

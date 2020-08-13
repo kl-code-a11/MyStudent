@@ -4,5 +4,5 @@ import bean.Grade;
 
 public interface GradeDao {
 	
-     Grade findById(int gid);
+     Grade findById(int gid) throws Exception;
 }

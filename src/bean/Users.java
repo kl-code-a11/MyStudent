@@ -3,7 +3,7 @@ package bean;
 public class Users {
 	private int id;	
 	private String name;
-	private String age;
+	private int age;
 	private String address;
 	private String passwd;
 	public String getPasswd() {
@@ -35,11 +35,11 @@ public class Users {
 		this.name = name;
 	}
 
-	public  String  getAge() {
+	public  int  getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 

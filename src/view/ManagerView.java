@@ -14,7 +14,7 @@ public class ManagerView {
 	UsersDao ud=new UsersDaoImpl();
 	StudentDao sd=new StudentDaoImpl();
 	Scanner sc=new Scanner(System.in);
-	public void login_view() {
+	public void login_view() throws Exception {
 		System.out.println("---------------欢迎登陆学生信息系统------------------");
 		System.out.println("1、登录\t2、退出");
 		System.out.println("------------------------------------------------");
@@ -34,7 +34,7 @@ public class ManagerView {
 		}
 	}
 	
-	public void TeaView() {
+	public void TeaView() throws Exception {
 		System.out.println("登录成功");
 		boolean flag=true;
 		a:while(flag) {

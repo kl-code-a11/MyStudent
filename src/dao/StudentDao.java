@@ -11,7 +11,7 @@ public interface StudentDao {
 	boolean save(Student student);
 	boolean update(Student student);
 	boolean delete(int id);
-	Student findById(int id);
+	Student findById(int id) throws Exception;
 	
 	
 }
