@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 
 
@@ -17,11 +18,30 @@ public abstract  class DBUtil<T> {
 	Connection conn=null;
 	PreparedStatement pst=null;
 	ResultSet rs=null;
-	public Connection getConnection() {
+	/*public Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url="jdbc:mysql://127.0.0.1:3306/mytest?characterEncoding=utf-8&useSSL=false";
 		    conn=DriverManager.getConnection(url,"root","root");
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return conn;
+	}*/
+	public Connection getConnection() {
+		Properties pro=new Properties();
+        InputStream in=this.getClass().getClassLoader().getResourceAsStream("jdbc.properties");
+        //到资源文件夹下找到对应文件
+		try {		
+			pro.load(in);
+			String driver=pro.getProperty("driver");
+			String url=pro.getProperty("url");
+			String name=pro.getProperty("user");
+			String pwd=pro.getProperty("password");
+			Class.forName(driver);
+		
+		    conn=DriverManager.getConnection(url,name,pwd);
 		} catch (Exception e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -77,7 +97,7 @@ public abstract  class DBUtil<T> {
 				Field f=clazz.getDeclaredField(cname);//通过名称获取对应属性
 				//忽略权限
 				f.setAccessible(true);
-				//将rs中获取的值，放入指定对象的对应
+		//将rs中获取的值，放入对应的对象中的对应属性
 				f.set(t, rs.getObject(i));
 			
 			}
